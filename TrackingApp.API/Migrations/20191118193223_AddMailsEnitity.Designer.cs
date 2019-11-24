@@ -2,31 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrackingApp.API.Data;
 
 namespace TrackingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20191118193223_AddMailsEnitity")]
+    partial class AddMailsEnitity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028");
-
-            modelBuilder.Entity("TrackingApp.API.models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Departments");
-                });
 
             modelBuilder.Entity("TrackingApp.API.models.Mail", b =>
                 {
@@ -47,25 +37,11 @@ namespace TrackingApp.API.Migrations
 
                     b.Property<DateTime>("LogDate");
 
-                    b.Property<int>("Organization");
-
                     b.Property<string>("RefNo");
 
                     b.HasKey("Id");
 
                     b.ToTable("Mails");
-                });
-
-            modelBuilder.Entity("TrackingApp.API.models.Organization", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Organizations");
                 });
 
             modelBuilder.Entity("TrackingApp.API.models.User", b =>
